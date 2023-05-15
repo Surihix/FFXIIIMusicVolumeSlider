@@ -56,10 +56,10 @@
             // CreditLabel
             // 
             this.CreditLabel.AutoSize = true;
-            this.CreditLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CreditLabel.Location = new System.Drawing.Point(15, 110);
+            this.CreditLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.CreditLabel.Location = new System.Drawing.Point(10, 111);
             this.CreditLabel.Name = "CreditLabel";
-            this.CreditLabel.Size = new System.Drawing.Size(144, 15);
+            this.CreditLabel.Size = new System.Drawing.Size(154, 16);
             this.CreditLabel.TabIndex = 2;
             this.CreditLabel.Text = "App Progammer : Surihix";
             // 

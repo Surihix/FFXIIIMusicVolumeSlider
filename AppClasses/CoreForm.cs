@@ -198,14 +198,14 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                 {
                     try
                     {
-                        var filelistimgfile = whitePath + "white_data\\sys\\filelist" + langCode + ".win32.bin";
-                        var whiteimgFile = whitePath + "white_data\\sys\\white_img" + langCode + ".win32.bin";
+                        var filelistFile = whitePath + "white_data\\sys\\filelist" + langCode + ".win32.bin";
+                        var whiteImgFile = whitePath + "white_data\\sys\\white_img" + langCode + ".win32.bin";
 
-                        if (File.Exists(filelistimgfile) && File.Exists(whiteimgFile))
+                        if (File.Exists(filelistFile) && File.Exists(whiteImgFile))
                         {
                             try
                             {
-                                PatchPrep.PackedMode(filelistimgfile, whitePath, langCode, whiteimgFile, SliderVal);
+                                PatchPrep.PackedMode(filelistFile, whitePath, langCode, whiteImgFile, SliderVal);
                             }
                             catch (Exception ex)
                             {
