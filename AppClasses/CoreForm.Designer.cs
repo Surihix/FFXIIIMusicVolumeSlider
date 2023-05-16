@@ -34,11 +34,11 @@
             this.PathTextBox = new System.Windows.Forms.TextBox();
             this.BrowseButton = new System.Windows.Forms.Button();
             this.VoGroupBox = new System.Windows.Forms.GroupBox();
-            this.EnVoRadiobutton = new System.Windows.Forms.RadioButton();
             this.JpVoRadiobutton = new System.Windows.Forms.RadioButton();
+            this.EnVoRadiobutton = new System.Windows.Forms.RadioButton();
             this.FileSystemGroupBox = new System.Windows.Forms.GroupBox();
-            this.PackedRadioButton = new System.Windows.Forms.RadioButton();
             this.NovaRadioButton = new System.Windows.Forms.RadioButton();
+            this.PackedRadioButton = new System.Windows.Forms.RadioButton();
             this.TxtAboveSliderLabel = new System.Windows.Forms.Label();
             this.SliderTrackBar = new System.Windows.Forms.TrackBar();
             this.SliderValuesLabel = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@
             // 
             // AppImgPictureBox
             // 
+            this.AppImgPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AppImgPictureBox.Image")));
             this.AppImgPictureBox.Location = new System.Drawing.Point(13, 13);
             this.AppImgPictureBox.Name = "AppImgPictureBox";
             this.AppImgPictureBox.Size = new System.Drawing.Size(535, 211);
@@ -98,17 +99,6 @@
             this.VoGroupBox.TabStop = false;
             this.VoGroupBox.Text = "Voice Over Settings :";
             // 
-            // EnVoRadiobutton
-            // 
-            this.EnVoRadiobutton.AutoSize = true;
-            this.EnVoRadiobutton.Location = new System.Drawing.Point(7, 20);
-            this.EnVoRadiobutton.Name = "EnVoRadiobutton";
-            this.EnVoRadiobutton.Size = new System.Drawing.Size(85, 19);
-            this.EnVoRadiobutton.TabIndex = 0;
-            this.EnVoRadiobutton.TabStop = true;
-            this.EnVoRadiobutton.Text = "English VO";
-            this.EnVoRadiobutton.UseVisualStyleBackColor = true;
-            // 
             // JpVoRadiobutton
             // 
             this.JpVoRadiobutton.AutoSize = true;
@@ -119,6 +109,17 @@
             this.JpVoRadiobutton.TabStop = true;
             this.JpVoRadiobutton.Text = "Japanese VO";
             this.JpVoRadiobutton.UseVisualStyleBackColor = true;
+            // 
+            // EnVoRadiobutton
+            // 
+            this.EnVoRadiobutton.AutoSize = true;
+            this.EnVoRadiobutton.Location = new System.Drawing.Point(7, 20);
+            this.EnVoRadiobutton.Name = "EnVoRadiobutton";
+            this.EnVoRadiobutton.Size = new System.Drawing.Size(85, 19);
+            this.EnVoRadiobutton.TabIndex = 0;
+            this.EnVoRadiobutton.TabStop = true;
+            this.EnVoRadiobutton.Text = "English VO";
+            this.EnVoRadiobutton.UseVisualStyleBackColor = true;
             // 
             // FileSystemGroupBox
             // 
@@ -132,17 +133,6 @@
             this.FileSystemGroupBox.TabStop = false;
             this.FileSystemGroupBox.Text = "File System Settings :";
             // 
-            // PackedRadioButton
-            // 
-            this.PackedRadioButton.AutoSize = true;
-            this.PackedRadioButton.Location = new System.Drawing.Point(7, 20);
-            this.PackedRadioButton.Name = "PackedRadioButton";
-            this.PackedRadioButton.Size = new System.Drawing.Size(114, 19);
-            this.PackedRadioButton.TabIndex = 0;
-            this.PackedRadioButton.TabStop = true;
-            this.PackedRadioButton.Text = "Default / Packed";
-            this.PackedRadioButton.UseVisualStyleBackColor = true;
-            // 
             // NovaRadioButton
             // 
             this.NovaRadioButton.AutoSize = true;
@@ -153,6 +143,17 @@
             this.NovaRadioButton.TabStop = true;
             this.NovaRadioButton.Text = "Nova / Unpacked";
             this.NovaRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // PackedRadioButton
+            // 
+            this.PackedRadioButton.AutoSize = true;
+            this.PackedRadioButton.Location = new System.Drawing.Point(7, 20);
+            this.PackedRadioButton.Name = "PackedRadioButton";
+            this.PackedRadioButton.Size = new System.Drawing.Size(114, 19);
+            this.PackedRadioButton.TabIndex = 0;
+            this.PackedRadioButton.TabStop = true;
+            this.PackedRadioButton.Text = "Default / Packed";
+            this.PackedRadioButton.UseVisualStyleBackColor = true;
             // 
             // TxtAboveSliderLabel
             // 

@@ -37,9 +37,10 @@
             // 
             // AboutPictureBox
             // 
-            this.AboutPictureBox.Location = new System.Drawing.Point(36, 12);
+            this.AboutPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AboutPictureBox.Image")));
+            this.AboutPictureBox.Location = new System.Drawing.Point(42, 16);
             this.AboutPictureBox.Name = "AboutPictureBox";
-            this.AboutPictureBox.Size = new System.Drawing.Size(100, 80);
+            this.AboutPictureBox.Size = new System.Drawing.Size(89, 82);
             this.AboutPictureBox.TabIndex = 0;
             this.AboutPictureBox.TabStop = false;
             // 
