@@ -246,6 +246,7 @@
             this.Controls.Add(this.AppImgPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CoreForm";
             this.Text = "Final Fantasy XIII - Music Volume Slider";
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).EndInit();
