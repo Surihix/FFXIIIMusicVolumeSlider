@@ -1,8 +1,8 @@
-﻿namespace FFXIIIMusicVolumeSlider.AppClasses.VolumeClasses
+﻿namespace FFXIIIMusicVolumeSlider.VolumeClasses
 {
-    internal class SCDlist
+    internal class SCDArray
     {
-        public static readonly string[] XIIImusicList = new string[]
+        public static readonly string[] XIIImusicArray = new string[]
         {
             "0.8:music_100rosh.win32.scd",
             "0.79:music_101ldun_f.win32.scd",

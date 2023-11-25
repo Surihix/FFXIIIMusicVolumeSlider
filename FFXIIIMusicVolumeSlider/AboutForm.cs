@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses
+namespace FFXIIIMusicVolumeSlider
 {
     public partial class AboutForm : Form
     {

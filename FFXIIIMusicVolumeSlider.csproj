@@ -37,7 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WhiteBinTools_dll\bin\Release\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,30 +53,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppClasses\AboutForm.cs">
+    <Compile Include="FFXIIIMusicVolumeSlider\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppClasses\AboutForm.Designer.cs">
+    <Compile Include="FFXIIIMusicVolumeSlider\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppClasses\CmnMethods.cs" />
-    <Compile Include="AppClasses\CoreForm.cs">
+    <Compile Include="FFXIIIMusicVolumeSlider\CmnMethods.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\CoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppClasses\CoreForm.Designer.cs">
+    <Compile Include="FFXIIIMusicVolumeSlider\CoreForm.Designer.cs">
       <DependentUpon>CoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppClasses\UserSettings.cs" />
-    <Compile Include="AppClasses\VolumeClasses\AdjustVolume.cs" />
-    <Compile Include="AppClasses\PatchPrep.cs" />
-    <Compile Include="AppClasses\VolumeClasses\SCDlist.cs" />
-    <Compile Include="AppClasses\UnpackBin.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\UserSettings.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\VolumeClasses\AdjustVolume.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\PatchPrep.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\VolumeClasses\SCDArray.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\Program.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses1.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses2.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses3.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\BinaryHelpers.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\CmnEnums.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\IOhelpers.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\ZlibFunctions.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\UnpackTypeC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AppClasses\AboutForm.resx">
+    <EmbeddedResource Include="FFXIIIMusicVolumeSlider\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppClasses\CoreForm.resx">
+    <EmbeddedResource Include="FFXIIIMusicVolumeSlider\CoreForm.resx">
       <DependentUpon>CoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -87,7 +95,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,5 +111,6 @@
   <ItemGroup>
     <Content Include="app_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

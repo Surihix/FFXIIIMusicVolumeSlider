@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses
+namespace FFXIIIMusicVolumeSlider
 {
     public partial class CoreForm : Form
     {
@@ -26,6 +27,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                 SliderTrackBar.Select();
 
                 CmnMethods.AppMsgBox("Please set the path of the 'FFXiiiLauncher.exe' file present in the FINAL FANTASY XIII folder.", "Information", MessageBoxIcon.Information);
+                BrowseButton.Enabled = true;
             }
             else
             {
@@ -149,6 +151,10 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
 
         public void EnableComponents()
         {
+            if (BrowseButton.Enabled.Equals(false))
+            {
+                BrowseButton.Enabled = true;
+            }
             EnVoRadiobutton.Enabled = true;
             JpVoRadiobutton.Enabled = true;
             PackedRadioButton.Enabled = true;
@@ -160,12 +166,46 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
 
         public void DisableComponents()
         {
+            BrowseButton.Enabled = false;
             EnVoRadiobutton.Enabled = false;
             JpVoRadiobutton.Enabled = false;
             PackedRadioButton.Enabled = false;
             NovaRadioButton.Enabled = false;
             SliderTrackBar.Enabled = false;
             SetVolumeButton.Enabled = false;
+        }
+
+
+        public bool FilesCheck()
+        {
+            var valid = true;
+
+            if (File.Exists("DotNetZip.dll"))
+            {
+                byte[] hashArray;
+                string hash;
+                using (var checkStream = new FileStream("DotNetZip.dll", FileMode.Open, FileAccess.Read))
+                {
+                    using (var fileHash256 = SHA256.Create())
+                    {
+                        hashArray = fileHash256.ComputeHash(checkStream);
+                        hash = BitConverter.ToString(hashArray).Replace("-", "").ToLower();
+                    }
+
+                    if (!hash.Equals("8e9c0362e9bfb3c49af59e1b4d376d3e85b13aed0fbc3f5c0e1ebc99c07345f3"))
+                    {
+                        valid = false;
+                        CmnMethods.AppMsgBox($"'DotNetZip.dll' file is corrupt.\nPlease check if this Volume Slider program is properly downloaded.", "Error", MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                CmnMethods.AppMsgBox($"The 'DotNetZip.dll' file is missing.\nPlease ensure that this dll file is present next to this app's executable file.", "Error", MessageBoxIcon.Error);
+                valid = false;
+            }
+
+            return valid;
         }
 
 
@@ -205,7 +245,16 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                         {
                             try
                             {
-                                PatchPrep.PackedMode(filelistFile, whitePath, langCode, whiteImgFile, SliderVal);
+                                var valid = FilesCheck();
+
+                                if (valid)
+                                {
+                                    PatchPrep.PackedMode(filelistFile, whitePath, langCode, whiteImgFile, SliderVal);
+                                }
+                                else
+                                {
+                                    return;
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -234,14 +283,9 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                 {
                     unpackedMusicDir = PathTextBox.Text + "white_data\\sound\\pack\\8000\\usa";
                 }
-                else if (JpVoRadiobutton.Checked.Equals(true))
+                if (JpVoRadiobutton.Checked.Equals(true))
                 {
                     unpackedMusicDir = PathTextBox.Text + "white_data\\sound\\pack\\8000";
-                    string[] unpackedDirCheck = Directory.GetFiles(unpackedMusicDir, "*.scd", SearchOption.TopDirectoryOnly);
-                    if (unpackedDirCheck.Length.Equals(0))
-                    {
-                        CmnMethods.AppMsgBox("Unable to locate unpacked base game music files.\nOnly the unpacked DLC music files will be patched.", "Warning", MessageBoxIcon.Warning);
-                    }
                 }
 
                 if (Directory.Exists(unpackedMusicDir))
@@ -270,77 +314,70 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
 
         public void SaveValuesToXml()
         {
-            if (!File.Exists(PathTextBox.Text + "FFXiiiLauncher.exe"))
+            UserSettings saveXml = new UserSettings
             {
-                CmnMethods.AppMsgBox("Unable to locate Launcher executable file.\nPlease set the correct game path.", "Error", MessageBoxIcon.Error);
-            }
-            else
+                ExePath = PathTextBox.Text
+            };
+
+            if (EnVoRadiobutton.Checked.Equals(true))
             {
-                UserSettings saveXml = new UserSettings
-                {
-                    ExePath = PathTextBox.Text
-                };
-
-                if (EnVoRadiobutton.Checked.Equals(true))
-                {
-                    saveXml.VoiceOver = "en";
-                }
-
-                if (JpVoRadiobutton.Checked.Equals(true))
-                {
-                    saveXml.VoiceOver = "jp";
-                }
-
-                if (PackedRadioButton.Checked.Equals(true))
-                {
-                    saveXml.FileSystem = "packed";
-                }
-
-                if (NovaRadioButton.Checked.Equals(true))
-                {
-                    saveXml.FileSystem = "nova";
-                }
-
-                int SliderVal = SliderTrackBar.Value;
-                switch (SliderVal)
-                {
-                    case 0:
-                        saveXml.SliderValue = 0;
-                        break;
-                    case 1:
-                        saveXml.SliderValue = 1;
-                        break;
-                    case 2:
-                        saveXml.SliderValue = 2;
-                        break;
-                    case 3:
-                        saveXml.SliderValue = 3;
-                        break;
-                    case 4:
-                        saveXml.SliderValue = 4;
-                        break;
-                    case 5:
-                        saveXml.SliderValue = 5;
-                        break;
-                    case 6:
-                        saveXml.SliderValue = 6;
-                        break;
-                    case 7:
-                        saveXml.SliderValue = 7;
-                        break;
-                    case 8:
-                        saveXml.SliderValue = 8;
-                        break;
-                    case 9:
-                        saveXml.SliderValue = 9;
-                        break;
-                    case 10:
-                        saveXml.SliderValue = 10;
-                        break;
-                }
-
-                saveXml.SaveSettings();
+                saveXml.VoiceOver = "en";
             }
+
+            if (JpVoRadiobutton.Checked.Equals(true))
+            {
+                saveXml.VoiceOver = "jp";
+            }
+
+            if (PackedRadioButton.Checked.Equals(true))
+            {
+                saveXml.FileSystem = "packed";
+            }
+
+            if (NovaRadioButton.Checked.Equals(true))
+            {
+                saveXml.FileSystem = "nova";
+            }
+
+            int SliderVal = SliderTrackBar.Value;
+            switch (SliderVal)
+            {
+                case 0:
+                    saveXml.SliderValue = 0;
+                    break;
+                case 1:
+                    saveXml.SliderValue = 1;
+                    break;
+                case 2:
+                    saveXml.SliderValue = 2;
+                    break;
+                case 3:
+                    saveXml.SliderValue = 3;
+                    break;
+                case 4:
+                    saveXml.SliderValue = 4;
+                    break;
+                case 5:
+                    saveXml.SliderValue = 5;
+                    break;
+                case 6:
+                    saveXml.SliderValue = 6;
+                    break;
+                case 7:
+                    saveXml.SliderValue = 7;
+                    break;
+                case 8:
+                    saveXml.SliderValue = 8;
+                    break;
+                case 9:
+                    saveXml.SliderValue = 9;
+                    break;
+                case 10:
+                    saveXml.SliderValue = 10;
+                    break;
+            }
+
+            saveXml.SaveSettings();
         }
 
 

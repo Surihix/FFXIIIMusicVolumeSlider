@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses
+namespace FFXIIIMusicVolumeSlider
 {
     internal class CmnMethods
     {

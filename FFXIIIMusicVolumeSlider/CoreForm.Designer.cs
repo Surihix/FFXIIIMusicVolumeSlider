@@ -1,4 +1,4 @@
-﻿namespace FFXIIIMusicVolumeSlider.AppClasses
+﻿namespace FFXIIIMusicVolumeSlider
 {
     partial class CoreForm
     {
@@ -200,7 +200,7 @@
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(29, 15);
             this.VersionLabel.TabIndex = 10;
-            this.VersionLabel.Text = "v1.0";
+            this.VersionLabel.Text = "v1.2";
             // 
             // AboutLinkLabel
             // 

@@ -1,22 +1,23 @@
-﻿using FFXIIIMusicVolumeSlider.AppClasses.VolumeClasses;
+﻿using FFXIIIMusicVolumeSlider.VolumeClasses;
+using FFXIIIMusicVolumeSlider.WhiteBinTools;
+using FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses
+namespace FFXIIIMusicVolumeSlider
 {
     internal class PatchPrep
     {
         public static void PackedMode(string filelistFileVar, string whitePathVar, string langCodeVar, string whiteimgFileVar, int sliderValueVar)
         {
-            UnpackBin.FilePaths(filelistFileVar);
+            UnpackTypeC.UnpackFilelistPaths(CmnEnums.GameCodes.ff131, filelistFileVar);
 
-            var filelistPathsFile = whitePathVar + "white_data\\sys\\filelist" + langCodeVar + ".win32.txt";
+            var filelistPathsFile = whitePathVar + "white_data\\sys\\filelist" + langCodeVar + ".win32.bin.txt";
 
-            uint totalFileCount = 0;
-            totalFileCount = (uint)File.ReadAllLines(filelistPathsFile).Count();
-            totalFileCount--;
+            uint totalFileCount = (uint)File.ReadAllLines(filelistPathsFile).Count();
+            totalFileCount -= 1;
 
             var whiteMusicDir = "";
             switch (langCodeVar)
@@ -29,7 +30,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                     break;
             }
 
-            using (var imgBinPathsReader = new StreamReader(filelistPathsFile))
+            using (var imgPathsReader = new StreamReader(filelistPathsFile))
             {
                 using (var imgBin = new FileStream(whiteimgFileVar, FileMode.Open, FileAccess.Write))
                 {
@@ -38,7 +39,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
 
                         for (int m = 0; m < totalFileCount; m++)
                         {
-                            string[] parsedFileLine = imgBinPathsReader.ReadLine().Split(':');
+                            string[] parsedFileLine = imgPathsReader.ReadLine().Split(':');
                             var fPos = Convert.ToUInt32(parsedFileLine[0], 16) * 2048;
                             var fPath = parsedFileLine[3];
 
@@ -55,7 +56,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
                 }
             }
 
-            CmnMethods.IfFileExistsDel(whitePathVar + "white_data\\sys\\filelist" + langCodeVar + ".win32.txt");
+            CmnMethods.IfFileExistsDel(filelistPathsFile);
 
             PatchSucess(sliderValueVar);
         }
@@ -67,7 +68,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses
 
             if (musicDir.Length.Equals(0))
             {
-                CmnMethods.AppMsgBox("Unpacked music folder is empty.\nPlease unpack the game data correctly with the Nova mod manager and then try setting the volume.", "Error", MessageBoxIcon.Error);
+                CmnMethods.AppMsgBox("One or more unpacked music folders are empty.\nPlease unpack the game data correctly with the Nova mod manager and then try setting the volume.", "Error", MessageBoxIcon.Error);
                 return;
             }
 

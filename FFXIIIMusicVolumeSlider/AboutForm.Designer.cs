@@ -1,4 +1,4 @@
-﻿namespace FFXIIIMusicVolumeSlider.AppClasses
+﻿namespace FFXIIIMusicVolumeSlider
 {
     partial class AboutForm
     {

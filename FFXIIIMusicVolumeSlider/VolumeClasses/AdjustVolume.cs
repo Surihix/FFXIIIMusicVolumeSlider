@@ -1,21 +1,22 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses.VolumeClasses
+namespace FFXIIIMusicVolumeSlider.VolumeClasses
 {
     internal class AdjustVolume
     {
         public static void SCD(BinaryWriter writerNameVar, uint writerPosVar, string scdFileNameVar, int sliderValVar)
         {
-            foreach (var scd in SCDlist.XIIImusicList)
+            foreach (var scd in SCDArray.XIIImusicArray)
             {
                 var defaultScd = scd.Split(':');
-                var defaultScdVol = Convert.ToSingle(defaultScd[0]);
+                var defaultScdVol = float.Parse(defaultScd[0], CultureInfo.InvariantCulture);
                 var defaultScdName = defaultScd[1];
 
                 if (scdFileNameVar.Equals(defaultScdName))
                 {
-                    float volLvlToScale = 0;
+                    float volLvlToScale;
                     float newVolLvl = 0;
 
                     switch (sliderValVar)
@@ -81,7 +82,7 @@ namespace FFXIIIMusicVolumeSlider.AppClasses.VolumeClasses
                     }
 
                     writerNameVar.BaseStream.Position = writerPosVar;
-                    writerNameVar.Write((Single)newVolLvl);
+                    writerNameVar.Write(newVolLvl);
                 }
             }
         }

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace FFXIIIMusicVolumeSlider.AppClasses
+namespace FFXIIIMusicVolumeSlider
 {
     public class UserSettings
     {

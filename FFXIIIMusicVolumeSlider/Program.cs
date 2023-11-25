@@ -1,5 +1,4 @@
-﻿using FFXIIIMusicVolumeSlider.AppClasses;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace FFXIIIMusicVolumeSlider
