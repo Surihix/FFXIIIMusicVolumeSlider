@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -176,39 +175,6 @@ namespace FFXIIIMusicVolumeSlider
         }
 
 
-        public bool FilesCheck()
-        {
-            var valid = true;
-
-            if (File.Exists("DotNetZip.dll"))
-            {
-                byte[] hashArray;
-                string hash;
-                using (var checkStream = new FileStream("DotNetZip.dll", FileMode.Open, FileAccess.Read))
-                {
-                    using (var fileHash256 = SHA256.Create())
-                    {
-                        hashArray = fileHash256.ComputeHash(checkStream);
-                        hash = BitConverter.ToString(hashArray).Replace("-", "").ToLower();
-                    }
-
-                    if (!hash.Equals("8e9c0362e9bfb3c49af59e1b4d376d3e85b13aed0fbc3f5c0e1ebc99c07345f3"))
-                    {
-                        valid = false;
-                        CmnMethods.AppMsgBox($"'DotNetZip.dll' file is corrupt.\nPlease check if this Volume Slider program is properly downloaded.", "Error", MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                CmnMethods.AppMsgBox($"The 'DotNetZip.dll' file is missing.\nPlease ensure that this dll file is present next to this app's executable file.", "Error", MessageBoxIcon.Error);
-                valid = false;
-            }
-
-            return valid;
-        }
-
-
         private void SetVolumeButton_Click(object sender, EventArgs e)
         {
             DisableComponents();
@@ -245,16 +211,7 @@ namespace FFXIIIMusicVolumeSlider
                         {
                             try
                             {
-                                var valid = FilesCheck();
-
-                                if (valid)
-                                {
-                                    PatchPrep.PackedMode(filelistFile, whitePath, langCode, whiteImgFile, SliderVal);
-                                }
-                                else
-                                {
-                                    return;
-                                }
+                                PatchPrep.PackedMode(filelistFile, whitePath, langCode, whiteImgFile, SliderVal);
                             }
                             catch (Exception ex)
                             {

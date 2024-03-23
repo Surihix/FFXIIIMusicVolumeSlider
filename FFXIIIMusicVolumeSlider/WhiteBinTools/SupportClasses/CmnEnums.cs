@@ -8,5 +8,18 @@
             ff132,
             none
         }
+
+        public enum CryptActions
+        {
+            d,
+            e
+        }
+
+
+        public enum Endianness
+        {
+            LittleEndian,
+            BigEndian
+        }
     }
 }

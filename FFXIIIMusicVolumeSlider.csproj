@@ -36,10 +36,6 @@
     <ApplicationIcon>app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WhiteBinTools_dll\bin\Release\DotNetZip.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,14 +67,35 @@
     <Compile Include="FFXIIIMusicVolumeSlider\PatchPrep.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\VolumeClasses\SCDArray.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\Program.cs" />
-    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses1.cs" />
-    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses2.cs" />
-    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses3.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\Encryption.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\Decryption.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\Generator.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\IntegersArray.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\CryptoFunctions.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\CryptoBase.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\CryptoClasses\CryptFilelist.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistVariables.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistProcesses.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\FilelistClasses\FilelistChunksPrep.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\RepackClasses\RepackVariables.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\BinaryHelpers.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\CmnEnums.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\IOhelpers.cs" />
     <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\SupportClasses\ZlibFunctions.cs" />
-    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\UnpackTypeC.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\UnpackTypePaths.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\CRC32.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\Deflate.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\DeflateStream.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\GZipStream.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\Inflate.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\InfTree.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\ParallelDeflateOutputStream.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\Tree.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\Zlib.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\ZlibBaseStream.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\ZlibCodec.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\ZlibConstants.cs" />
+    <Compile Include="FFXIIIMusicVolumeSlider\WhiteBinTools\ZlibClasses\ZlibStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FFXIIIMusicVolumeSlider\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
