@@ -7,7 +7,7 @@ using static FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses.CmnEnums;
 
 namespace FFXIIIMusicVolumeSlider.WhiteBinTools.FilelistClasses
 {
-    public partial class FilelistProcesses
+    public class FilelistProcesses
     {
         public static void PrepareFilelistVars(FilelistVariables filelistVariables, string filelistFile)
         {

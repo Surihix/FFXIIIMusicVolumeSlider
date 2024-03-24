@@ -13,6 +13,7 @@ namespace FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses
             }
         }
 
+
         public static void ExCopyTo(this Stream source, Stream destination, long offset, long count, int bufferSize = 81920)
         {
             var returnAddress = source.Position;
