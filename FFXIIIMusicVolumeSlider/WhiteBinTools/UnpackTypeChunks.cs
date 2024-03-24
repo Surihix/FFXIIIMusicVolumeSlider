@@ -1,13 +1,12 @@
 ﻿using FFXIIIMusicVolumeSlider.WhiteBinTools.FilelistClasses;
 using FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses;
 using System.IO;
-using static FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses.CmnEnums;
 
 namespace FFXIIIMusicVolumeSlider.WhiteBinTools
 {
-    public class UnpackTypePaths
+    public class UnpackTypeChunks
     {
-        public static void UnpackFilelistPaths(GameCodes gameCode, string filelistFile)
+        public static void UnpackFilelistChunks(string filelistFile)
         {
             var filelistVariables = new FilelistVariables();
 
@@ -23,9 +22,6 @@ namespace FFXIIIMusicVolumeSlider.WhiteBinTools
             Directory.CreateDirectory(filelistVariables.DefaultChunksExtDir);
 
             CmnMethods.IfFileExistsDel(outChunkFile);
-
-
-            FilelistProcesses.DecryptProcess(gameCode, filelistVariables);
 
             using (var filelistStream = new FileStream(filelistVariables.MainFilelistFile, FileMode.Open, FileAccess.Read))
             {

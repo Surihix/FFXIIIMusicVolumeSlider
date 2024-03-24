@@ -1,6 +1,5 @@
 ﻿using FFXIIIMusicVolumeSlider.VolumeClasses;
 using FFXIIIMusicVolumeSlider.WhiteBinTools;
-using FFXIIIMusicVolumeSlider.WhiteBinTools.SupportClasses;
 using System;
 using System.IO;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace FFXIIIMusicVolumeSlider
     {
         public static void PackedMode(string filelistFileVar, string whitePathVar, string langCodeVar, string whiteimgFileVar, int sliderValueVar)
         {
-            UnpackTypePaths.UnpackFilelistPaths(CmnEnums.GameCodes.ff131, filelistFileVar);
+            UnpackTypeChunks.UnpackFilelistChunks(filelistFileVar);
 
             var filelistPathsFile = whitePathVar + "white_data\\sys\\filelist" + langCodeVar + ".win32.bin.txt";
 

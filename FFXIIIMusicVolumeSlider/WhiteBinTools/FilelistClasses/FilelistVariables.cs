@@ -19,17 +19,5 @@
         public uint ChunkInfoSize { get; set; }
         public uint TotalChunks { get; set; }
         public uint ChunkFNameCount { get; set; }
-
-        public string[] ConvertedStringData { get; set; }
-        public uint Position { get; set; }
-        public uint UnCmpSize { get; set; }
-        public uint CmpSize { get; set; }
-        public string MainPath { get; set; }
-
-        public string DirectoryPath { get; set; }
-        public string FileName { get; set; }
-        public uint NoPathFileCount { get; set; }
-        public string FullFilePath { get; set; }
-        public bool IsCompressed { get; set; }
     }
 }
